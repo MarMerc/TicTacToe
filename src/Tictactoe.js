@@ -105,6 +105,7 @@ export default function Tictactoe() {
     document.getElementById("winnerPanel").style.visibility = "hidden";
     document.getElementById("mientras").style.visibility = "visible";
     document.getElementById("tableroGral").visibility = "invisible";
+    document.getElementById("turno").style.visibility = "invisible";
     //Reinicia los jugadores
     setFormUsers(initialUsers);
   };
