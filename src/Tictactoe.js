@@ -86,6 +86,7 @@ export default function Tictactoe() {
       setCells(squares);
     } else {
       document.getElementById("winnerPanel").style.visibility = "visible";
+      document.getElementById("versus").style.visibility = "invisible";
       <p>Juego terminado</p>;
     }
   };
@@ -106,6 +107,8 @@ export default function Tictactoe() {
     document.getElementById("mientras").style.visibility = "visible";
     document.getElementById("tableroGral").visibility = "invisible";
     document.getElementById("turno").style.visibility = "hidden";
+    document.getElementById("versus").style.visibility = "hidden";
+    document.getElementById("userBoard").style.visibility = "hidden";
     //Reinicia los jugadores
     setFormUsers(initialUsers);
   };
@@ -121,6 +124,7 @@ export default function Tictactoe() {
   const handleUser = (e) => {
     document.getElementById("userBoard").style.visibility = "visible";
     document.getElementById("winnerPanel").style.visibility = "hidden";
+    document.getElementById("versus").style.visibility = "visible";
   };
 
   const handleThema = (e) => {
@@ -175,7 +179,10 @@ export default function Tictactoe() {
             </tbody>
           </table>
         </div>
-        <div id="turno" className="w-48 ml-20 mt-6 h-20 rounded-bl-lg invisible">
+        <div
+          id="turno"
+          className="w-48 ml-20 mt-6 h-20 rounded-bl-lg invisible"
+        >
           {!winner ? (
             <>
               <h3 className="flex text-sm align-middle justify-center">
@@ -193,11 +200,14 @@ export default function Tictactoe() {
             <>
               {
                 (document.getElementById("winnerPanel").style.visibility =
-                  "visible")
+                  'visible')
               }
-              <h3 className="flex text-sm align-middle justify-center">
-                The game is finned!
-              </h3>
+              <span className="flex text-sm align-middle justify-center">
+                {winner}
+              </span>
+              <span className="flex text-sm align-middle justify-center">
+                is WIN!
+              </span>
             </>
           )}
         </div>
@@ -238,6 +248,11 @@ export default function Tictactoe() {
         id="lateral"
         className="flex flex-col gap-5 self-center items-center ml-32"
       >
+        <div id="versus" className="-mt-20 mb-8 invisible">
+              <span className="text-7xl text-green-500 animate-bounce translate-y-72">{player1}</span>
+              <span className="text-9xl text-slate-200 animate-bounce translate-y-5"> VS </span>
+              <span className="text-7xl text-red-500 translate-y-72">{player2}</span>
+        </div>
         <form
           onSubmit={handleSubmit}
           id="userBoard"
@@ -273,7 +288,6 @@ export default function Tictactoe() {
               <h4 className="label-text mb-5">(Will Play with "0")</h4>
             </div>
           </div>
-
           <button className="self-center w-32">Play</button>
         </form>
 
